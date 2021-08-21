@@ -204,6 +204,11 @@
 				top: 0;
 				opacity: 0;
 				}
+				#blah {
+					max-width: 350px;
+					height: auto;
+					margin: 10px auto;
+				}
 		</style>
 	</head>
 	<body class="">
@@ -253,19 +258,16 @@
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
 				<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
 			</div>
-		
+		</div>	
+		<center>
+		<div class="upload-btn-wrapper">		
 			
-		</div>				
-			<div class="content content--side">	
-			</div>
-			<div class="content content--side content--right">
-			</div>
-			<div class="content content--center">
-				<div class="upload-btn-wrapper">
-					<button class="upload btn">Upload</button>
-					<input type="file" name="myfile" />
-				</div>
-			</div>  
+			<input type='file' name="filename" onchange="readURL(this);" accept="image/gif, image/jpeg, image/png"/>
+			<br />
+    		<img id="blah" src="#" />
+			<button class="upload btn">Upload</button>
+		</div>
+		</center> 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -294,6 +296,20 @@
 				});
 			});
         </script>
+		<script>
+			function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+		</script>
 		<script src="js/imagesloaded.pkgd.min.js"></script>
 		<script src="js/masonry.pkgd.min.js"></script>
 		<script src="js/anime.min.js"></script>
